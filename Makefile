@@ -1,6 +1,6 @@
 install_soft:
-	yum install  epel-release
-	yum install  tmux htop vim tree net-tools wget git ansible
+	yum install -y epel-release
+	yum install -y tmux htop vim tree net-tools wget git ansible
 	sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
 	reboot
 
