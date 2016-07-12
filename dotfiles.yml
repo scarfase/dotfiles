@@ -14,4 +14,6 @@
                 line="syntax on"
         - lineinfile: dest="/etc/vimrc" state=present create=yes
                 line="highlight Comment ctermfg=LightCyan"
-        
+       - lineinfile: dest="~/.gitconfig" state=present create=yes 
+                line="[color]
+                            ui = auto"                
