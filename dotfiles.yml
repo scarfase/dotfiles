@@ -1,15 +1,17 @@
 ---
 - hosts: all
   tasks:
-        - copy: src=./files/.git-promt.sh dest=~/
+        - copy: src=./files/.git-prompt.sh dest=~
         - lineinfile: dest="~/.bash_profile" state=present create=yes
-        line="source ~/.git-prompt.sh"
-        line="export PS1='$(__git_ps1) \W\$ '"
+                line="source ~/.git-prompt.sh"
+        - lineinfile: dest="~/.bash_profile" state=present create=yes
+                line="export PS1='$(__git_ps1) \W\$ '"
         
         - lineinfile: dest="/etc/profile" state=present create=yes
-        line="alias vi='vim'"
+                 line="alias vi='vim'"
         
         - lineinfile: dest="/etc/vimrc" state=present create=yes
-        line="syntax on"
-        line="highlight Comment ctermfg=LightCyan"
+                line="syntax on"
+        - lineinfile: dest="/etc/vimrc" state=present create=yes
+                line="highlight Comment ctermfg=LightCyan"
         
