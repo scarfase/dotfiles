@@ -13,5 +13,5 @@ make install_soft
 After reboot 
 <pre>
 //set git and vim settings
-install_dotfiles
+make install_dotfiles
 </pre>
