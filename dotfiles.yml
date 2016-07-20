@@ -7,7 +7,7 @@
         - lineinfile: dest="~/.bash_profile" state=present create=yes
                 line="export PS1='$(__git_ps1) \W\$ '"
         
-        - lineinfile: dest="/etc/profile" state=present create=yes
+        - lineinfile: dest="~/.bashrc" state=present create=yes
                  line="alias vi='vim'"
         
         - lineinfile: dest="/etc/vimrc" state=present create=yes
