@@ -5,14 +5,14 @@
         - lineinfile: dest="~/.bash_profile" state=present create=yes
                 line="source ~/.git-prompt.sh"
         - lineinfile: dest="~/.bash_profile" state=present create=yes
-                line="export PS1='$(__git_ps1) \W\$ '"
-        
+                line="export PS1='\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[\033[38;5;26m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[36m\]$(__git_ps1)\[\033[0m\]\n\\$\[$(tput sgr0)\]'"
+
         - lineinfile: dest="~/.bashrc" state=present create=yes
                  line="alias vi='vim'"
         
-        - lineinfile: dest="/etc/vimrc" state=present create=yes
+        - lineinfile: dest="~/.vimrc" state=present create=yes
                 line="syntax on"
-        - lineinfile: dest="/etc/vimrc" state=present create=yes
+        - lineinfile: dest="~/.vimrc" state=present create=yes
                 line="highlight Comment ctermfg=LightCyan"
         
         - lineinfile: dest="~/.gitconfig" state=present create=yes
