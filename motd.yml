@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+        - copy: src=./files/.motd.sh dest=~
+        - lineinfile: dest="~/.bash_profile" state=present create=yes
+                line="source ~/.motd.sh"
