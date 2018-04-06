@@ -2,6 +2,14 @@
 - hosts: all
   tasks:
         - copy: src=./files/.git-prompt.sh dest=~
+        - file:
+           path: ~/.vim/autoload
+           state: directory
+           mode: 0755
+
+        - copy: src=./files/plug.vim dest=~/.vim/autoload/
+        - copy: src=./files/.vimrc dest=~ 
+
         - lineinfile: dest="~/.bash_profile" state=present create=yes
                 line="source ~/.git-prompt.sh"
         - lineinfile: dest="~/.bash_profile" state=present create=yes
@@ -16,10 +24,6 @@
         - lineinfile: dest="~/.bashrc" state=present create=yes
                 line="export HISTIGNORE='ls:ll:history:w'" 
 
-        - lineinfile: dest="~/.vimrc" state=present create=yes
-                line="syntax on"
-        - lineinfile: dest="~/.vimrc" state=present create=yes
-                line="highlight Comment ctermfg=LightCyan"
-        
         - lineinfile: dest="~/.gitconfig" state=present create=yes
                 line="[color]\n\tui=auto"
+        
