@@ -1,17 +1,12 @@
-Install required software OS Centos 7
-<pre>
-//Change name and email 
-git config --global user.name "name"
-git config --global user.email "email"
-//ignore ssl
-git config --global http.sslVerify false
-git clone "this repo"
-//install epel repo and required software
-//selinux set disabled and reboot pc
-make install_soft 
-</pre>
-After reboot 
-<pre>
-//set git and vim settings
-make install_dotfiles
-</pre>
+##Install required software, configure vim and install plugins for vim, configure bash promt with git - OS Centos 7
+
+###Install dotfiles
+Clone this repo and make
+<pre>make install_soft </pre>
+
+This install epel repo and required software, configure vim and install plugins for vim, configure bash promt with git, selinux set disabled and reboot pc.
+
+###After reboot 
+
+If need motd, make this
+<pre>make install_motd</pre>
