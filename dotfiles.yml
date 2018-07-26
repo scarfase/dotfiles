@@ -1,29 +1,52 @@
 ---
 - hosts: all
   tasks:
-        - copy: src=./files/.git-prompt.sh dest=~
+        - copy: 
+            src=./files/.git-prompt.sh 
+            dest=~
         - file:
            path: ~/.vim/autoload
            state: directory
            mode: 0755
+        - copy: 
+            src=./files/plug.vim 
+            dest=~/.vim/autoload/
+        - copy:
+            src=./files/.vimrc 
+            dest=~ 
+        - lineinfile: 
+            dest="~/.bash_profile" 
+            regexp="source ~/.git-prompt.sh"
+            line="source ~/.git-prompt.sh"
+            state=present
+        - lineinfile: 
+            dest="~/.bash_profile" 
+            regexp="^export PS1*"  
+            line="export PS1='\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[\033[38;5;26m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[36m\]$(__git_ps1)\[\033[0m\]\\n\\$\[$(tput sgr0)\]'"
+            state=present
+        - lineinfile: 
+            dest="~/.bashrc"
+            regexp="alias vi='vim'"
+            line="alias vi='vim'"
+            state=present
+        - lineinfile: 
+            dest="~/.bashrc"
+            regexp="PROMPT_COMMAND='history -a'"
+            line="PROMPT_COMMAND='history -a'"
+            state=present
+        - lineinfile: 
+            dest="~/.bashrc" 
+            regexp="export HISTIGNORE='ls:ll:history:w'"
+            line="export HISTIGNORE='ls:ll:history:w'" 
+            state=present
+        - lineinfile: 
+            dest="~/.gitconfig" 
+            regexp="^\[color\]"
+            line="[color]"
+            state=present
+        - lineinfile:
+            dest="~/.gitconfig"
+            regexp="ui=auto"
+            line="\tui=auto"
+            state=present
 
-        - copy: src=./files/plug.vim dest=~/.vim/autoload/
-        - copy: src=./files/.vimrc dest=~ 
-
-        - lineinfile: dest="~/.bash_profile" state=present create=yes
-                line="source ~/.git-prompt.sh"
-        - lineinfile: dest="~/.bash_profile" state=present create=yes
-                line="export PS1='\[\033[38;5;10m\]\h\[$(tput sgr0)\]\[\033[38;5;26m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[36m\]$(__git_ps1)\[\033[0m\]\n\\$\[$(tput sgr0)\]'"
-
-        - lineinfile: dest="~/.bashrc" state=present create=yes
-                line="alias vi='vim'"
-
-        - lineinfile: dest="~/.bashrc" state=present create=yes
-                line="PROMPT_COMMAND='history -a'"
-
-        - lineinfile: dest="~/.bashrc" state=present create=yes
-                line="export HISTIGNORE='ls:ll:history:w'" 
-
-        - lineinfile: dest="~/.gitconfig" state=present create=yes
-                line="[color]\n\tui=auto"
-        
