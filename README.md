@@ -9,10 +9,7 @@ This install epel repo and required software, selinux set disabled and reboot pc
 After reboot 
 
 <pre>make install_vim</pre>
-This configure vim with plugins for vim, configure bash promt with git. After that run vim and execute
-
-<pre>:PlugInstall</pre>
-
+This configure vim with plugins for vim, configure bash promt with git. And autoinstall vim plugins.
 
 If need motd, make this
 <pre>make install_motd</pre>

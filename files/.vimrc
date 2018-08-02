@@ -1,3 +1,5 @@
+autocmd VimEnter * PlugInstall
+autocmd VimEnter * q
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
@@ -24,6 +26,9 @@ set expandtab
 set autoindent
 set number
 set encoding=UTF-8
+
+""Setting NerdTree
+let NERDTreeShowHidden=1
 
 ""Color
 syntax on
