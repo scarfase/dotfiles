@@ -11,3 +11,7 @@ install_vim:
 install_motd:
 	ansible-playbook motd.yml -i local -vv
 
+install_docker_bash:
+	cat > /etc/bash_completion.d/kubectl << __EOF__
+	source <(kubectl completion bash)
+	__EOF__
