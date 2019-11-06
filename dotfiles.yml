@@ -4,16 +4,6 @@
         - copy: 
             src=./files/.git-prompt.sh 
             dest=~
-        - file:
-           path: ~/.vim/autoload
-           state: directory
-           mode: 0755
-        - copy: 
-            src=./files/plug.vim 
-            dest=~/.vim/autoload/
-        - copy:
-            src=./files/.vimrc 
-            dest=~ 
         - lineinfile: 
             dest="~/.bash_profile" 
             regexp="source ~/.git-prompt.sh"
